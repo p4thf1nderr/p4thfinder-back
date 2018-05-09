@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformer\PostTransformer;
 
 class PostController extends Controller
 {
@@ -12,8 +14,9 @@ class PostController extends Controller
      *
      * @return json
      */
-    public function index() {
-        // return list
+    public function index()
+    {
+        return $this->collection(Post::all(), new PostTransformer);    
     }
 
 
