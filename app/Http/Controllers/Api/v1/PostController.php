@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->collection(Post::all(), new PostTransformer());    
+        return $this->collection(Post::paginate(4), new PostTransformer());
     }
 
 
@@ -27,8 +27,8 @@ class PostController extends Controller
      * @return array
      */
     public function show($id) {
-        //return $this->item(Post::findOrFail($id), new PostTransformer());
-        return Post::find($id);
+        return $this->item(Post::findOrFail($id), new PostTransformer());
+        //return Post::find($id);
     }
 
     /**
