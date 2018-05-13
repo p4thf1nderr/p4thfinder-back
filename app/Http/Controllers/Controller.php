@@ -15,7 +15,7 @@ class Controller extends BaseController
         $this->fractal = $fractal;
     }
 
-    public function item($data, TransfomerAbstract $transformer, $resourceKey = null)
+    public function item($data, TransformerAbstract $transformer, $resourceKey = null)
     {
         return $this->fractal->item($data, $transformer, $resourceKey);
     }

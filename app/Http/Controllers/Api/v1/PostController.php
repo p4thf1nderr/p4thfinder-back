@@ -16,18 +16,19 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->collection(Post::all(), new PostTransformer);    
+        return $this->collection(Post::all(), new PostTransformer());    
     }
 
 
     /**
-     * пост детельно
+     * Undocumented function
      *
      * @param [type] $id
-     * @return void
+     * @return array
      */
     public function show($id) {
-        // return post
+        //return $this->item(Post::findOrFail($id), new PostTransformer());
+        return Post::find($id);
     }
 
     /**

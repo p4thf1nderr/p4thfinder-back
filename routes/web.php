@@ -20,4 +20,11 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->get('posts', [
         'as' => 'posts', 'uses' => 'PostController@index'
     ]);
+    $router->get('posts/{id}', [
+        'as' => 'post', 'uses' => 'PostController@show'
+    ]);
+
+    /* $app->get('user/{id}', function ($id) {
+        return 'User '.$id;
+    }); */
 });
