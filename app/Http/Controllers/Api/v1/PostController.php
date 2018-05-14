@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->collection(Post::paginate(4), new PostTransformer());
+        return $this->collection(Post::paginate(10), new PostTransformer());
     }
 
 
