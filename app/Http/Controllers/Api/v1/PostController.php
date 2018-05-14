@@ -12,7 +12,7 @@ class PostController extends Controller
     /**
      * список постов
      *
-     * @return json
+     * @return array
      */
     public function index()
     {
@@ -39,11 +39,11 @@ class PostController extends Controller
      */
     public function store(Request $request) {
 
-        $input = $request->all();
+        $args = $request->all();
 
         $post = new Post();
-        $post->title = $input['title'];
-        $post->text  = $input['text'];
+        $post->title = $args['input']['title'];
+        $post->text  = $args['input']['text'];
         $post->save();
 
         return $post;
