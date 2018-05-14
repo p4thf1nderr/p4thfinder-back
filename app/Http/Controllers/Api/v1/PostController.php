@@ -34,19 +34,44 @@ class PostController extends Controller
     /**
      * создание поста
      *
-     * @return void
+     * @param Request $request
+     * @return Post
      */
-    public function store() {
+    public function store(Request $request) {
 
+        $input = $request->all();
+
+        $post = new Post();
+        $post->title = $input['title'];
+        $post->text  = $input['text'];
+        $post->save();
+
+        return $post;
     }
 
     /**
      * редактирование поста
      *
      * @param [type] $id
-     * @return void
+     * @param Request $request
+     * @return Post
      */
-    public function update($id) {
+    public function update($id, Request $request) {
+        $post = Post::findOrFail($id);
+
+        $input = $request->all();
+
+        if (isset($input['title'])) {
+            $post->title = $input['title'];
+        }
+
+        if (isset($input['text'])) {
+            $post->text = $input['text'];
+        }
+
+        $post->save();
+
+        return $post;
 
     }
 }

@@ -23,6 +23,9 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->get('posts/{id}', [
         'as' => 'post', 'uses' => 'PostController@show'
     ]);
+    $router->post('posts/new', [
+        'as' => 'postCreate', 'uses' => 'PostController@store'
+    ]);
 
     /* $app->get('user/{id}', function ($id) {
         return 'User '.$id;
