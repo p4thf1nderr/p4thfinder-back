@@ -9,7 +9,9 @@
         "laravel/lumen-framework": "5.6.*",
         "vlucas/phpdotenv": "~2.2",
         "flipbox/lumen-generator": "^5.6",
-        "league/fractal": "^0.17.0"
+        "league/fractal": "^0.17.0",
+        "barryvdh/laravel-ide-helper": "^2.4",
+        "doctrine/dbal": "^2.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -30,6 +32,11 @@
     "scripts": {
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta"
         ]
     },
     "minimum-stability": "dev",
