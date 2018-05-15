@@ -21,7 +21,7 @@ class PostController extends Controller
 
 
     /**
-     * Undocumented function
+     * Отдельный пост
      *
      * @param [type] $id
      * @return array
