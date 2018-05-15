@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
@@ -49,7 +50,26 @@ class AuthController extends Controller
     }
 
 
-    public function createUser() {
+    /**
+     * @param Request $request
+     * @return User
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function createUser(Request $request) {
+        $this->validate($request, [
+            'email'    => 'required|email|max:255|unique:users',
+            'password' => 'required',
+            'name'     => 'required'
+        ]);
 
+        $data = $request->only('email', 'password', 'name');
+
+        $user = new User();
+        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $user->email    = $data['email'];
+        $user->name     = $data['name'];
+        $user->save();
+
+        return $user;
     }
 }

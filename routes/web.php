@@ -16,6 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/auth/login', 'AuthController@postLogin');
+$router->post('/auth/login/create', 'AuthController@createUser');
 
 $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($router) {
     $router->get('posts', [
