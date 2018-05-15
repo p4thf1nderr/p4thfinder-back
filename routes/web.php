@@ -26,7 +26,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->post('posts/new', [
         'as' => 'postCreate', 'uses' => 'PostController@store'
     ]);
-    $router->post('posts/edit{id}', [
+    $router->post('posts/edit/{id}', [
         'as' => 'postUpdate', 'uses' => 'PostController@update'
     ]);
 

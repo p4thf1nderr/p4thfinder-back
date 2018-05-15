@@ -59,14 +59,14 @@ class PostController extends Controller
     public function update($id, Request $request) {
         $post = Post::findOrFail($id);
 
-        $input = $request->all();
+        $args = $request->all();
 
-        if (isset($input['title'])) {
-            $post->title = $input['title'];
+        if (isset($args['input']['title'])) {
+            $post->title = $args['input']['title'];
         }
 
-        if (isset($input['text'])) {
-            $post->text = $input['text'];
+        if (isset($args['input']['text'])) {
+            $post->text  = $args['input']['text'];
         }
 
         $post->save();
