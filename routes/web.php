@@ -15,6 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('/auth/login', 'AuthController@postLogin');
 
 $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($router) {
     $router->get('posts', [
