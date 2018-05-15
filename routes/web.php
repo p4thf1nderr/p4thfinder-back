@@ -25,12 +25,18 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->get('posts/{id}', [
         'as' => 'post', 'uses' => 'PostController@show'
     ]);
-    $router->post('posts/new', [
-        'as' => 'postCreate', 'uses' => 'PostController@store'
-    ]);
-    $router->post('posts/edit/{id}', [
-        'as' => 'postUpdate', 'uses' => 'PostController@update'
-    ]);
+
+
+    $router->group(['prefix' => 'admin', 'middleware' => 'auth:api'],
+        function () use ($router) {
+            $router->post('posts/new', [
+                'as' => 'postCreate', 'uses' => 'PostController@store'
+            ]);
+            $router->post('posts/edit/{id}', [
+                'as' => 'postUpdate', 'uses' => 'PostController@update'
+            ]);
+        }
+    );
 
     /* $app->get('user/{id}', function ($id) {
         return 'User '.$id;
