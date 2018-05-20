@@ -19,6 +19,8 @@ $router->post('/auth/login', 'AuthController@postLogin');
 $router->post('/auth/login/create', 'AuthController@createUser');
 
 $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($router) {
+    
+    // роуты для постов в публичной части
     $router->get('posts', [
         'as' => 'posts', 'uses' => 'PostController@index'
     ]);
@@ -26,7 +28,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
         'as' => 'post', 'uses' => 'PostController@show'
     ]);
 
-
+    // роуты для постов в административной части
     $router->group(['prefix' => 'admin', 'middleware' => 'auth:api'],
         function () use ($router) {
             $router->post('posts/new', [
@@ -37,6 +39,15 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
             ]);
         }
     );
+
+
+    // роуты для получения списка тегов в публичной части
+    $router->get('tags', [
+        'as' => 'tags', 'uses' => 'TagController@index'
+    ]);
+    $router->get('tags/{id}', [
+        'as' => 'tag', 'uses' => 'TagController@show'
+    ]);
 
     /* $app->get('user/{id}', function ($id) {
         return 'User '.$id;
