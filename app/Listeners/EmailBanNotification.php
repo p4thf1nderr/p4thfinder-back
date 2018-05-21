@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserWasBanned;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailBanNotification
+class EmailBanNotification implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -24,6 +25,6 @@ class EmailBanNotification
      */
     public function handle(UserWasBanned $event)
     {
-        //
+        var_dump($event->user->name . 'was banned');
     }
 }

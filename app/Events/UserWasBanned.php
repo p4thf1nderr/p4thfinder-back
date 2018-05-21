@@ -3,8 +3,10 @@
 namespace App\Events;
 
 use App\Models\User;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserWasBanned extends Event
+
+class UserWasBanned extends Event implements ShouldBroadcast
 {
     public $user;
 
@@ -15,6 +17,11 @@ class UserWasBanned extends Event
      */
     public function __construct(User $user)
     {
-        $this->user = $user;
+        $this->user = $user;   
+    }
+
+    public function broadcastOn
+    {
+        
     }
 }
