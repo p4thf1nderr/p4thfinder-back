@@ -40,7 +40,6 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
         }
     );
 
-
     // роуты для получения списка тегов в публичной части
     $router->get('tags', [
         'as' => 'tags', 'uses' => 'TagController@index'
@@ -48,8 +47,4 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->get('tags/{id}', [
         'as' => 'tag', 'uses' => 'TagController@show'
     ]);
-
-    /* $app->get('user/{id}', function ($id) {
-        return 'User '.$id;
-    }); */
 });
