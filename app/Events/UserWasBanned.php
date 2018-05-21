@@ -20,8 +20,8 @@ class UserWasBanned extends Event implements ShouldBroadcast
         $this->user = $user;   
     }
 
-    public function broadcastOn
+    public function broadcastOn()
     {
-        
+        return [];
     }
 }
