@@ -46,6 +46,8 @@ class PostController extends Controller
         $post->text  = $args['input']['text'];
         $post->save();
 
+        $post->tags()->sync($args['input']['tags']);
+
         return $post;
     }
 
