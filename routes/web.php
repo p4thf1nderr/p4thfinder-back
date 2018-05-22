@@ -36,6 +36,10 @@ $router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($ro
     $router->get('posts/{id}', [
         'as' => 'post', 'uses' => 'PostController@show'
     ]);
+    // TO DO: придумать более красивый способ фильтрации
+    $router->get('posts/filter/{id}', [
+        'as' => 'post', 'uses' => 'PostController@byTag'
+    ]);
 
     // роуты для постов в административной части
     $router->group(['prefix' => 'admin', 'middleware' => 'auth:api'],

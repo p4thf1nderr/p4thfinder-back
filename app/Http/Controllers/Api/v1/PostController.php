@@ -74,4 +74,20 @@ class PostController extends Controller
         return $post;
 
     }
+
+    /**
+     * фильтр по id тега
+     *
+     * @return array
+     */
+    public function byTag($id)
+    {
+        $posts = Post::whereHas('tags', function($query) use ($id) {
+            $query->where('id', $id);
+        });
+
+        return $this->collection(
+            $posts->paginate(10), new PostTransformer()
+        );
+    }
 }
