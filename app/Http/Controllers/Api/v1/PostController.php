@@ -38,15 +38,13 @@ class PostController extends Controller
      * @return Post
      */
     public function store(Request $request) {
-
         $args = $request->all();
-
         $post = new Post();
         $post->title = $args['input']['title'];
         $post->text  = $args['input']['text'];
         $post->save();
 
-        $post->tags()->sync($args['input']['tags']);
+        $post->tags()->sync($args['input']['checked']);
 
         return $post;
     }
