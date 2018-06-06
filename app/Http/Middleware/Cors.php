@@ -15,12 +15,10 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-        //Intercepts OPTIONS requests
-        if ($request->isMethod('OPTIONS')) {
-            $response = response('', 200);
-        } else {
-            // Pass the request to the next middleware
-            $response = $next($request);
+        $response = $next($request);
+
+        if ($request->getMethod() == 'OPTIONS' && $response->getStatusCode() == 405) {
+            return new Response('', 204, $response->headers->all());
         }
 
         // Adds headers to the response
