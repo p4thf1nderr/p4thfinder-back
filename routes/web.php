@@ -24,13 +24,13 @@ $router->get('/event', function () {
 });
 
 // авторизация
-$router->group(['prefix' => 'v1', 'middleware' => 'cors'], function () use ($router) {
+$router->group(['prefix' => 'v1'], function () use ($router) {
     $router->post('/auth/login', 'AuthController@postLogin');
     $router->post('/auth/login/create', 'AuthController@createUser');
 });
 
 
-$router->group(['prefix' => 'v1', 'middleware' => 'cors', 'namespace' => 'Api\v1'], function () use ($router) {
+$router->group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () use ($router) {
     
     // роуты для постов в публичной части
     $router->get('posts', [

@@ -62,9 +62,12 @@ $app->singleton(
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'cors' => App\Http\Middleware\Cors::class, 
+    \Barryvdh\Cors\HandleCors::class,
+    //'cors' => App\Http\Middleware\Cors::class, 
 ]);
 
+
+$app->configure('cors');
 
 // $app->middleware([
 //    App\Http\Middleware\ExampleMiddleware::class
@@ -95,6 +98,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Barryvdh\Cors\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
