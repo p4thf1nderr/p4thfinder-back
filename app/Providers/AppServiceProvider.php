@@ -17,5 +17,11 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() == 'local') {
             $this->app->register(IdeHelperServiceProvider::class);
         }
+
+        $request = app('request');
+        if ($request->isMethod('OPTIONS'))
+        {
+            app()->options($request->path(), function() { return response('', 200); });
+        }
     }
 }
