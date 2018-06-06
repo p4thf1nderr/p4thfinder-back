@@ -11,6 +11,16 @@
 |
 */
 
+$router->options(
+    '/{any:.*}', 
+    [
+        'middleware' => ['cors'], 
+        function (){ 
+            return response(['status' => 'success']); 
+        }
+    ]
+);
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
