@@ -24,7 +24,7 @@ $router->get('/event', function () {
 });
 
 // авторизация
-$router->group(['middleware' => 'cors'], function () use ($router) {
+$router->group(['prefix' => 'v1', 'middleware' => 'cors'], function () use ($router) {
     $router->post('/auth/login', 'AuthController@postLogin');
     $router->post('/auth/login/create', 'AuthController@createUser');
 });
