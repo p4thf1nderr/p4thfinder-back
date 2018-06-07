@@ -73,4 +73,9 @@ $router->group(['prefix' => 'v1', 'middleware' => 'cors', 'namespace' => 'Api\v1
     $router->get('tags/{id}', [
         'as' => 'tag', 'uses' => 'TagController@show'
     ]);
+
+    // пробуем выгрузку
+    $router->get('export', [
+        'as' => 'export', 'uses' => 'ExportController@index'
+    ]);
 });
