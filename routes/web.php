@@ -17,6 +17,15 @@ $router->get('/', function () use ($router) {
 });
 
 
+$router->options(
+    '/{any:.*}', 
+    [
+        'middleware' => ['cors'], 
+        function (){ 
+            return response(['status' => 'success']); 
+        }
+    ]
+);
 
 $router->get('/event', function () {
     $user = new \App\Models\User();
