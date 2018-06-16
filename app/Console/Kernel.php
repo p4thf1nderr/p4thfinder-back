@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('com')
-                ->everyMinute();
+                 ->timezone('Europe/Moscow')
+                 ->monthlyOn(17, '07:00');
     }
 }
