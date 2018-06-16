@@ -23,7 +23,10 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-$app->withFacades();
+
+$app->withFacades(true, [
+    'Maatwebsite\Excel\Facades\Excel' => 'Excel'
+]);
 
 // $app->withEloquent();
 $app->withEloquent();
@@ -94,6 +97,8 @@ $app->register(App\Providers\AuthServiceProvider::class);
 
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
+
+$app->register(Maatwebsite\Excel\ExcelServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

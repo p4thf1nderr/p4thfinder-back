@@ -33,6 +33,11 @@ $router->get('/event', function () {
 
 });
 
+// роут для бота
+$router->get('communal', [
+        'as' => 'communal', 'uses' => 'CommunalData\CommunalController@index'
+]);
+
 // авторизация
 $router->group(['prefix' => 'v1', 'middleware' => 'cors'], function () use ($router) {
     $router->post('/auth/login', 'AuthController@postLogin');
