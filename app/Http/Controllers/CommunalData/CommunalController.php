@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CommunalController extends Controller
 {
-    public static function index($value='')
+    public function index($value='')
     {
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
