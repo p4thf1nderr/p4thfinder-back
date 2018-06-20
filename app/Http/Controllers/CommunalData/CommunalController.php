@@ -1,15 +1,19 @@
 <?php
 namespace App\Http\Controllers\CommunalData;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 
 class CommunalController extends Controller
 {
     public static function index($value='')
     {
-    	$token = env('BOT_TOKEN');
+		$token = env('BOT_TOKEN');
+		
+		Log::warning('ddd');
+
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
 		$bot->command('start', function ($message) use ($bot) {
