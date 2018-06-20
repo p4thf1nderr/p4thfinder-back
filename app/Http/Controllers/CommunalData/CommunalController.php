@@ -25,7 +25,7 @@ class CommunalController extends Controller
 		});
 		$bot->run(); */
 
-		Log::warning($message);
+		Log::warning('бот запускается');
 
 		$token = env('BOT_TOKEN');
 		$chatId = env('CHAT_ID');
