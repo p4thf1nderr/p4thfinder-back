@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers\CommunalData;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 
 class CommunalController extends Controller
@@ -23,6 +24,8 @@ class CommunalController extends Controller
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
 		$bot->run(); */
+
+		Log::warning($message);
 
 		$token = env('BOT_TOKEN');
 		$chatId = env('CHAT_ID');
