@@ -40,7 +40,7 @@ class CommunalController extends Controller
 		// после этого раскладываем какая информация к какой службе относится
 		// когда данные разбиты на переменные, отправляем их на почтовый сервис, где происходит подстановка и отправка
 
-		$bot->command('push', function ($message) use ($bot) {
+		$bot->command('push', function ($message) use ($bot, $chatId) {
 			$text = $message->getText();
 			$param = str_replace('/push ', '', $text);
 			$answer = 'Неизвестная команда';
@@ -48,8 +48,10 @@ class CommunalController extends Controller
 			{
 				$answer = 'Привет, ' . $param;
 			}
-			$bot->sendMessage($message->getChat()->getId(), $answer);
+			$bot->sendMessage($chatId, $answer);
 		});
+
+		$bot->run();
 
 
     }

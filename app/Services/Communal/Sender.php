@@ -8,7 +8,7 @@ class Servcie
 {
     public function send($message)
     {
-        Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($name, $email, $text));
+        Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($message));
     }
 }
 
