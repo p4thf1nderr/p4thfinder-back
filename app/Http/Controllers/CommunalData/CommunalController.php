@@ -34,6 +34,6 @@ class CommunalController extends Controller
 		$bot = new \TelegramBot\Api\BotApi($token);
 
 		$bot->sendMessage($chatId, $messageText);
-		$bot->run();
+		//$bot->run();
     }
 }
