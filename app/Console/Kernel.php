@@ -26,6 +26,6 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('com')
                  ->timezone('Europe/Moscow')
-                 ->monthlyOn(17, '07:00');
+                 ->everyMinute();
     }
 }
