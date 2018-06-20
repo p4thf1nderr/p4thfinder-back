@@ -32,5 +32,5 @@ class Contact extends Mailable
     {
         return $this->from('artem.tretyakov.91@gmail.com');
 }
-    }
+    
 }
