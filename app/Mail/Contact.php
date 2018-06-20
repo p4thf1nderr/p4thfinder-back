@@ -11,18 +11,16 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $name;
+    protected $message;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $email, $text)
+    public function __construct($message)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->text = $text;
+        $this->message = $message;
     }
 
     /**
@@ -32,11 +30,6 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->view('email')
-            ->with([
-                'name' => $this->name,
-                'email' => $this->email,
-                'text' => $this->text
-            ]);
+        
     }
 }

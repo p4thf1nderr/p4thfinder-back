@@ -32,5 +32,25 @@ class CommunalController extends Controller
 
 		$bot->sendMessage($chatId, $messageText);
 		$bot->run();
+
+		
+
+		// команда push получает текст вида газ#24,хол#10,гор#40
+
+		// после этого раскладываем какая информация к какой службе относится
+		// когда данные разбиты на переменные, отправляем их на почтовый сервис, где происходит подстановка и отправка
+
+		$bot->command('push', function ($message) use ($bot) {
+			$text = $message->getText();
+			$param = str_replace('/push ', '', $text);
+			$answer = 'Неизвестная команда';
+			if (!empty($param))
+			{
+				$answer = 'Привет, ' . $param;
+			}
+			$bot->sendMessage($message->getChat()->getId(), $answer);
+		});
+
+
     }
 }
