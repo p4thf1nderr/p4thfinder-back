@@ -17,5 +17,10 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() == 'local') {
             $this->app->register(IdeHelperServiceProvider::class);
         }
+
+        $this->app->singleton('mailer', function ($app) {
+            $app->configure('services');
+            return $app->loadComponent('mail', 'Illuminate\Mail\MailServiceProvider', 'mailer');
+        });
     }
 }
