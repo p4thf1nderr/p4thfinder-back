@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register(IdeHelperServiceProvider::class);
         }
 
-        $this->app->singleton('mailer', function ($app) {
+       /* $this->app->singleton('mailer', function ($app) {
             $app->configure('services');
             return $app->loadComponent('mail', 'Illuminate\Mail\MailServiceProvider', 'mailer');
-        });
+        });*/
     }
 }
