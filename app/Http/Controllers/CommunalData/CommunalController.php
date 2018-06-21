@@ -34,7 +34,7 @@ class CommunalController extends Controller
 		    if (!empty($param))
 		    {
 		    	Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
-		    	//$answer = 'Привет, ' . $param;
+		    	$answer = 'Привет, ' . $param;
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
