@@ -25,6 +25,9 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
+$app->configure('mail');
+
+
 // $app->withEloquent();
 $app->withEloquent();
 
