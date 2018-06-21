@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers\CommunalData;
 
+use App\Http\Controllers\Controller;
+use App\Mail\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 
 class CommunalController extends Controller
@@ -31,7 +33,8 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
-		    	$answer = 'Привет, ' . $param;
+		    	Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
+		    	//$answer = 'Привет, ' . $param;
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
