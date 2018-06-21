@@ -10,7 +10,7 @@ class CommunalController extends Controller
 {
     public function index($value='')
     {
-    	/* $token = env('BOT_TOKEN');
+    	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
 		$bot->command('start', function ($message) use ($bot) {
@@ -25,7 +25,7 @@ class CommunalController extends Controller
 		});
 		$bot->run(); */
 
-		Log::warning('бот запускается');
+		/*Log::warning('бот запускается');
 
 		$token = env('BOT_TOKEN');
 		$chatId = env('CHAT_ID');
@@ -33,7 +33,7 @@ class CommunalController extends Controller
 
 		$bot = new \TelegramBot\Api\BotApi($token);
 
-		$bot->sendMessage($chatId, $messageText);
+		$bot->sendMessage($chatId, $messageText);*/
 		//$bot->run();
     }
 }

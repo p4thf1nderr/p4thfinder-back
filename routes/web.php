@@ -34,7 +34,7 @@ $router->get('/event', function () {
 });
 
 
-$router->get('communal', [
+$router->post('communal', [
         'as' => 'communal', 'uses' => 'CommunalData\CommunalController@index'
 ]);
 
