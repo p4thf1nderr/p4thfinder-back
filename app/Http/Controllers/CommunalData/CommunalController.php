@@ -23,10 +23,10 @@ class CommunalController extends Controller
 		/help - вывод справки';
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
-		$bot->run(); */
+		$bot->run();
 
-		/*Log::warning('бот запускается');
-
+		Log::warning('бот запускается');
+		/*
 		$token = env('BOT_TOKEN');
 		$chatId = env('CHAT_ID');
 		$messageText = 'Передайте показания';
