@@ -25,9 +25,9 @@ class CommunalController extends Controller
 		});
 
 
-		$bot->command('hello', function ($message) use ($bot) {
+		$bot->command('push', function ($message) use ($bot) {
 		    $text = $message->getText();
-		    $param = str_replace('/hello ', '', $text);
+		    $param = str_replace('/push ', '', $text);
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
