@@ -11,14 +11,8 @@ use Illuminate\Support\Facades\Mail;
 
 class CommunalController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-    	//dd($request);
-
-    	$parser = new Parser('GAS#34');
-    	$gas = $parser->parse();
-    	dd($gas);
-
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
@@ -47,7 +41,7 @@ class CommunalController extends Controller
 		    		$manager = new ComfortManager();
 		    		$manager->make()->write($gas);
 		    	}
-		    	Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
+		    	//Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
 		    	Log::warning('бот работает');
 		    	$answer = 'Привет, ' . $param;
 		    }
