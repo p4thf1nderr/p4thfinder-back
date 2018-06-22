@@ -34,7 +34,7 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
-		    	Log::warning('вот бот работает');
+		    	Log::warning($param);
 		    	$parser = new Parser($param);
 		    	$gas = $parser->parse();
 		    	Log::warning($gas);
