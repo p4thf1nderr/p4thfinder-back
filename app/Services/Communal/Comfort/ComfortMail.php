@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Mail;
 
 class ComfortMail
 {
-	public function write($message, $type = WATER, $address = env('ADDRESS')) 
+	public function write($message, $type = null, $address = env('ADDRESS')) 
 	{
-		Mail::to(env('MAIL_COMFORT'))->send(new Contact($message, $type, $address));
+		Mail::to(env('MAIL_COMFORT'))->send(new Contact($message, WATER, $address));
 	}
 }
