@@ -13,14 +13,20 @@ class Contact extends Mailable
 
     protected $message;
 
+    protected $type;
+
+    protected $address;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($message, $type, $address)
     {
         $this->message = $message;
+        $this->type = $type;
+        $this->address = $address;
     }
 
     /**
@@ -30,7 +36,14 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->view('communalMail');
+        if ($type == WATER) {
+            $type = 'Показания счетчиков холодной и горячей воды';
+        } elseif ($type == GAS) {
+            $type = 'Показания газового счетчика';
+        }
+
+        return $this->view('communalMail',
+            ['type' => $type,'message' => $message, 'address' => $address]);
     }
     
 }

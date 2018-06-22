@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 
 class CommunalController extends Controller
 {
-    public function index($value='')
+    public function index()
     {
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
@@ -33,6 +33,7 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
+
 		    	Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
 		    	Log::warning('бот работает');
 		    	$answer = 'Привет, ' . $param;

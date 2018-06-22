@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>test</title>
+	<title>Показания счетчиков</title>
 </head>
 <body>
-	<h2>test</h2>
+	<h2>{{ $address }}</h2>
+	<p>{{ $type }}</p>
+	<p>{{ $message }}</p>
 </body>
 </html>
