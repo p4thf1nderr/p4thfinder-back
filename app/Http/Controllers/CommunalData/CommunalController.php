@@ -43,7 +43,7 @@ class CommunalController extends Controller
 		    	}
 		    	//Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
 		    	Log::warning('бот работает');
-		    	$answer = 'Привет, ' . $param;
+		    	$answer = $gas;
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
