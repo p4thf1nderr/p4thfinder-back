@@ -3,6 +3,7 @@ namespace App\Http\Controllers\CommunalData;
 
 use App\Http\Controllers\Controller;
 use App\Mail\Contact;
+use App\Services\Communal\Comfort\ComfortManager;
 use App\Services\Communal\Parser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
