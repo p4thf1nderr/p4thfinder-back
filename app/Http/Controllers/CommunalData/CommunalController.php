@@ -34,8 +34,10 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
+		    	Log::warning('вот бот работает');
 		    	$parser = new Parser($param);
 		    	$gas = $parser->parse();
+		    	Log::warning($gas);
 		    	//dd(gas);
 		    	if (!is_null($gas)) {
 		    		$manager = new ComfortManager();
