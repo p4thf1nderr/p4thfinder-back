@@ -23,11 +23,12 @@ class Parser
 		$gas = null;
 
 		foreach ($counters as $counter => $value) {
-				if (substr($value, 0, 2) == 'GAS') {
-								$gas = $value, 3)
+					//dd(substr($value, 0, 3));
+				if (substr($value, 0, 3) == 'GAS') {
+								$gas = substr($value, 4);
 				}			
 		}
 
-		$rest = substr($counter, 0, 2);    // возвращает "bcdef"
+		return $gas;
 	}
 }

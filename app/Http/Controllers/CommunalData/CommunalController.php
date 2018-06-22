@@ -3,6 +3,7 @@ namespace App\Http\Controllers\CommunalData;
 
 use App\Http\Controllers\Controller;
 use App\Mail\Contact;
+use App\Services\Communal\Parser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -10,8 +11,14 @@ use Illuminate\Support\Facades\Mail;
 
 class CommunalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+    	//dd($request);
+
+    	$parser = new Parser('GAS#34');
+    	$gas = $parser->parse();
+    	dd($gas);
+
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
@@ -33,7 +40,13 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
-
+		    	$parser = new Parser($param);
+		    	$gas = $parser->parse();
+		    	//dd(gas);
+		    	if (!is_null($gas)) {
+		    		$manager = new ComfortManager();
+		    		$manager->make()->write($gas);
+		    	}
 		    	Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
 		    	Log::warning('бот работает');
 		    	$answer = 'Привет, ' . $param;
