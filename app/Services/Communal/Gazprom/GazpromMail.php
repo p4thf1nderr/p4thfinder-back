@@ -2,7 +2,8 @@
 
 namespace App\Services\Communal\Gazprom;
 
-use App\Mail\Contact;
+
+use App\Mail\GazpromContact;
 use Illuminate\Support\Facades\Mail;
 
 class GazpromMail
@@ -11,6 +12,6 @@ class GazpromMail
 	{
 		$address = env('ADDRESS');
 		//dd($text, $type, $address);
-		Mail::to(env('MAIL_GAZPROM'))->send(new Contact($gas, $address));
+		Mail::to(env('MAIL_GAZPROM'))->send(new GazpromContact($gas, $address));
 	}
 }
