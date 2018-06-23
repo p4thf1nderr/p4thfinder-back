@@ -11,9 +11,9 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $text;
+    protected $cold;
 
-    protected $type;
+    protected $hot;
 
     protected $address;
 
@@ -22,10 +22,10 @@ class Contact extends Mailable
      *
      * @return void
      */
-    public function __construct($text, $type, $address)
+    public function __construct($cold, $hot, $address)
     {
-        $this->text = $text;
-        $this->type = $type;
+        $this->cold = $cold;
+        $this->hot = $hot;
         $this->address = $address;
     }
 
@@ -36,14 +36,11 @@ class Contact extends Mailable
      */
     public function build()
     {
+       
         if ($this->type == "COL" || "HOT") {
-            $type = 'Показания счетчиков холодной и горячей воды';
-        } elseif ($this->type == "GAS") {
-            $type = 'Показания газового счетчика';
+            return $this->view('comfortMail',
+                ['hot' => $this->hot, 'cold' => $this->cold, 'address' => $this->address]);
         }
-
-        return $this->view('communalMail',
-            ['type' => $type,'text' => $this->text, 'address' => $this->address]);
     }
     
 }

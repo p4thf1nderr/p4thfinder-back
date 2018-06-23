@@ -40,11 +40,21 @@ class CommunalController extends Controller
 		    	$parser = new Parser($param);
 				$messages = $parser->parse();
 
+				// в массиве $messages содержится элементы
+
+				$comfort = [];
+				$gazprom = [];
+
 				foreach ($messages as $message) {
 					if ($message->type == "COL" || "HOT") {
-						$manager->make()->write($message->text, $message->type);
+						$comfort[] = $message->text;
+					} elseif ($message->type == "GAS") {
+						$gazprom[] = $message->text;
 					}
 				}
+
+
+				$manager->make()->write($comfort);
 		    	$answer = 'Ok';
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
