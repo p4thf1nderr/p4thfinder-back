@@ -44,13 +44,13 @@ class CommunalController extends Controller
 				// в массиве $messages содержится элементы
 
 				$comfort = [];
-				$gazprom = [];
+				$gazprom = null;
 
 				foreach ($messages as $mes) {
 					if ($mes->type == "COL" || "HOT") {
 						$comfort[] = $mes;
 					} elseif ($mes->type == "GAS") {
-						$gazprom[] = $mes;
+						$gazprom = $mes;
 					}
 				}
 
