@@ -14,20 +14,8 @@ class CommunalController extends Controller
 {
     public function index($value = '', ComfortManager $manager)
     {
-    	$param = 'GAS#12, COLD#10, HOT#5';
-    	$parser = new Parser($param);
-		$messages = $parser->parse();
-
-		foreach ($messages as $message) {
-			var_dump($message->type);
-			if ($message->type == "COLD" || "HOT") {
-				$manager->make()->write($message->text, $message->type);
-			}
-		}
-
-		dd($messages);
-
-
+    	//$param = 'GAS#12, COLD#10, HOT#5';
+		//dd($messages);
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
@@ -49,18 +37,16 @@ class CommunalController extends Controller
 		    $answer = 'Неизвестная команда';
 		    if (!empty($param))
 		    {
-		    	Log::warning($param);
 		    	$parser = new Parser($param);
-		    	$gas = $parser->parse();
-		    	Log::warning($gas);
-		    	//dd(gas);
-		    	if (!is_null($gas)) {
-		    		$manager = new ComfortManager();
-		    		$manager->make()->write($gas);
-		    	}
-		    	//Mail::to(env('MAIL_RECIPIENT'))->send(new Contact($param));
-		    	Log::warning('бот работает');
-		    	$answer = $gas;
+				$messages = $parser->parse();
+
+				foreach ($messages as $message) {
+					var_dump($message->type);
+					if ($message->type == "COLD" || "HOT") {
+						$manager->make()->write($message->text, $message->type);
+					}
+				}
+		    	$answer = 'Ok';
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);
 		});
