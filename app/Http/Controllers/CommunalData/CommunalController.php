@@ -12,8 +12,22 @@ use Illuminate\Support\Facades\Mail;
 
 class CommunalController extends Controller
 {
-    public function index()
+    public function index($value = '', ComfortManager $manager)
     {
+    	$param = 'GAS#12, COLD#10, HOT#5';
+    	$parser = new Parser($param);
+		$messages = $parser->parse();
+
+		foreach ($messages as $message) {
+			var_dump($message->type);
+			if ($message->type == "COLD" || "HOT") {
+				$manager->make()->write($message->text, $message->type);
+			}
+		}
+
+		dd($messages);
+
+
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start

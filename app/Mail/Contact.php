@@ -11,7 +11,7 @@ class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $message;
+    protected $text;
 
     protected $type;
 
@@ -22,9 +22,9 @@ class Contact extends Mailable
      *
      * @return void
      */
-    public function __construct($message, $type, $address)
+    public function __construct($text, $type, $address)
     {
-        $this->message = $message;
+        $this->text = $text;
         $this->type = $type;
         $this->address = $address;
     }
@@ -36,9 +36,9 @@ class Contact extends Mailable
      */
     public function build()
     {
-        if ($type == WATER) {
+        if ($type == "COLD" || "HOT") {
             $type = 'Показания счетчиков холодной и горячей воды';
-        } elseif ($type == GAS) {
+        } elseif ($type == "GAS") {
             $type = 'Показания газового счетчика';
         }
 

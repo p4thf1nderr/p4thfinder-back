@@ -2,6 +2,8 @@
 
 namespace App\Services\Communal;
 
+use App\Mail\Message;
+
 class Parser
 {
 	private $data;
@@ -16,19 +18,14 @@ class Parser
 	{
 		$counters = explode(', ', $this->data);
 
-		$cold = null;
-
-		$hot = null;
-
-		$gas = null;
+		$messages = [];
 
 		foreach ($counters as $counter => $value) {
-					//dd(substr($value, 0, 3));
-				if (substr($value, 0, 3) == 'GAS') {
-								$gas = substr($value, 4);
+					$text = substr($value, 4);
+					$type = substr($value, 0, 3);
+					$messages[] = new Message($text, $type);
 				}			
-		}
 
-		return $gas;
+		return $messages;
 	}
 }
