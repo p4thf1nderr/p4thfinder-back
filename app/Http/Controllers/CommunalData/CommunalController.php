@@ -50,7 +50,7 @@ class CommunalController extends Controller
 					if ($mes->type == "COL" || "HOT") {
 						$comfort[] = $mes;
 					} elseif ($mes->type == "GAS") {
-						$gazprom = $mes;
+						$gazprom = $mes->text;
 					}
 				}
 
