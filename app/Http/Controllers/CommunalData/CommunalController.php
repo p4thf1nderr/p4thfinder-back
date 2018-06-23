@@ -43,6 +43,8 @@ class CommunalController extends Controller
 
 				// в массиве $messages содержится элементы
 
+				Log::warning($messages);
+
 				$comfort = [];
 				$gazprom = null;
 
