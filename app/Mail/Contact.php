@@ -42,8 +42,10 @@ class Contact extends Mailable
             $type = 'Показания газового счетчика';
         }
 
+        dd($type, $this->text, $this->address);
+
         return $this->view('communalMail',
-            ['type' => $type,'message' => $this->text, 'address' => $this->address]);
+            ['type' => $type,'text' => $this->text, 'address' => $this->address]);
     }
     
 }
