@@ -36,7 +36,7 @@ class Contact extends Mailable
      */
     public function build()
     {
-        if ($this->type == "COLD" || "HOT") {
+        if ($this->type == "COL" || "HOT") {
             $type = 'Показания счетчиков холодной и горячей воды';
         } elseif ($this->type == "GAS") {
             $type = 'Показания газового счетчика';
