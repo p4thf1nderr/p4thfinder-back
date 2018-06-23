@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CommunalData;
 use App\Http\Controllers\Controller;
 use App\Mail\Contact;
 use App\Services\Communal\Comfort\ComfortManager;
+use App\Services\Communal\Gazprom\GazpromManager;
 use App\Services\Communal\Parser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class CommunalController extends Controller
 {
-    public function index($value = '', ComfortManager $manager)
+    public function index($value = '', ComfortManager $comManager, GazpromManager $gasManager)
     {
     	//$param = 'GAS#12, COLD#10, HOT#5';
 		//dd($messages);
@@ -31,7 +32,7 @@ class CommunalController extends Controller
 		});
 
 
-		$bot->command('push', function ($message) use ($bot, $manager) {
+		$bot->command('push', function ($message) use ($bot, $comManager, $gasManager) {
 		    $text = $message->getText();
 		    $param = str_replace('/push ', '', $text);
 		    $answer = 'Неизвестная команда';
@@ -54,7 +55,8 @@ class CommunalController extends Controller
 				}
 
 
-				$manager->make()->write($comfort);
+				$comManager->make()->write($comfort);
+				$gasManager->make()->write($gazprom);
 		    	$answer = 'Ok';
 		    }
 		    $bot->sendMessage($message->getChat()->getId(), $answer);

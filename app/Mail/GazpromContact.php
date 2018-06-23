@@ -7,13 +7,11 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Contact extends Mailable
+class GazpromContact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $cold;
-
-    protected $hot;
+    protected $gas;
 
     protected $address;
 
@@ -22,10 +20,9 @@ class Contact extends Mailable
      *
      * @return void
      */
-    public function __construct($cold, $hot, $address)
+    public function __construct($gas, $address)
     {
-        $this->cold = $cold;
-        $this->hot = $hot;
+        $this->gas = $gas;
         $this->address = $address;
     }
 
@@ -37,8 +34,8 @@ class Contact extends Mailable
     public function build()
     {
    
-        return $this->view('comfortMail',
-            ['hot' => $this->hot, 'cold' => $this->cold, 'address' => $this->address]);
+        return $this->view('gazpromMail',
+            ['gas' => $this->gas, 'address' => $this->address]);
     }
     
 }

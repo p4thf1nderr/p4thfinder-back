@@ -2,7 +2,7 @@
 
 namespace App\Services\Communal\Comfort;
 
-use App\Mail\Contact;
+use App\Mail\ComfortContact;
 use Illuminate\Support\Facades\Mail;
 
 class ComfortMail
@@ -22,6 +22,6 @@ class ComfortMail
 			}
 		}
 		//dd($text, $type, $address);
-		Mail::to(env('MAIL_COMFORT'))->send(new Contact($cold, $hot, $address));
+		Mail::to(env('MAIL_COMFORT'))->send(new ComfortContact($cold, $hot, $address));
 	}
 }
