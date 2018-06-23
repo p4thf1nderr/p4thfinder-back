@@ -47,9 +47,9 @@ class CommunalController extends Controller
 
 				foreach ($messages as $message) {
 					if ($message->type == "COL" || "HOT") {
-						$comfort[] = $message->text;
+						$comfort[] = $message;
 					} elseif ($message->type == "GAS") {
-						$gazprom[] = $message->text;
+						$gazprom[] = $message;
 					}
 				}
 
