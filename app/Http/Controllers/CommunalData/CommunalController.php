@@ -31,7 +31,7 @@ class CommunalController extends Controller
 		});
 
 
-		$bot->command('push', function ($message) use ($bot) {
+		$bot->command('push', function ($message) use ($bot, $manager) {
 		    $text = $message->getText();
 		    $param = str_replace('/push ', '', $text);
 		    $answer = 'Неизвестная команда';
