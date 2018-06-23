@@ -41,7 +41,6 @@ class CommunalController extends Controller
 				$messages = $parser->parse();
 
 				foreach ($messages as $message) {
-					var_dump($message->type);
 					if ($message->type == "COLD" || "HOT") {
 						$manager->make()->write($message->text, $message->type);
 					}
