@@ -21,6 +21,6 @@ class ComfortMail
 			}
 		}
 		//dd($text, $type, $address);
-		Mail::to(env('MAIL_COMFORT'))->send(new Contact($cold, $hot, $type, $address));
+		Mail::to(env('MAIL_COMFORT'))->send(new Contact($cold, $hot, $address));
 	}
 }
