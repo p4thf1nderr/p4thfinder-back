@@ -36,11 +36,9 @@ class Contact extends Mailable
      */
     public function build()
     {
-       
-        if ($this->type == "COL" || "HOT") {
-            return $this->view('comfortMail',
-                ['hot' => $this->hot, 'cold' => $this->cold, 'address' => $this->address]);
-        }
+   
+        return $this->view('comfortMail',
+            ['hot' => $this->hot, 'cold' => $this->cold, 'address' => $this->address]);
     }
     
 }
