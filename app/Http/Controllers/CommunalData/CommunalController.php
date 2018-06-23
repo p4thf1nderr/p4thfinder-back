@@ -45,11 +45,11 @@ class CommunalController extends Controller
 				$comfort = [];
 				$gazprom = [];
 
-				foreach ($messages as $message) {
-					if ($message->type == "COL" || "HOT") {
-						$comfort[] = $message;
-					} elseif ($message->type == "GAS") {
-						$gazprom[] = $message;
+				foreach ($messages as $mes) {
+					if ($mes->type == "COL" || "HOT") {
+						$comfort[] = $mes;
+					} elseif ($mes->type == "GAS") {
+						$gazprom[] = $mes;
 					}
 				}
 
