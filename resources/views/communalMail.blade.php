@@ -6,6 +6,5 @@
 <body>
 	<h2>{{ $address }}</h2>
 	<p>{{ $type }}</p>
-	<p>{{ $text }}</p>
 </body>
 </html>
