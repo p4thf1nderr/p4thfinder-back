@@ -12,6 +12,7 @@ class ComfortMail
 
 		$hot = null;
 		$cold = null;
+		$address = env('ADDRESS');
 
 		foreach ($data as $value) {
 			if ($value->type == "HOT") {
