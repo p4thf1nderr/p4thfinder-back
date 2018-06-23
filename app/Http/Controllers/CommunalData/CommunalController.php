@@ -43,21 +43,18 @@ class CommunalController extends Controller
 
 				// в массиве $messages содержится элементы
 
-				Log::warning($messages);
-
 				$comfort = [];
 				$gazprom = null;
 
 				foreach ($messages as $mes) {
 					if ($mes->type == "COL" || "HOT") {
 						$comfort[] = $mes;
-					} elseif ($mes->type == "GAS") {
+					}
+
+					if ($mes->type == "GAS") {
 						$gazprom = $mes->text;
 					}
 				}
-
-				Log::warning($gazprom);
-
 
 				$comManager->make()->write($comfort);
 				$gasManager->make()->write($gazprom);

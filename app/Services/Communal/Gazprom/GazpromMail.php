@@ -12,7 +12,6 @@ class GazpromMail
 	public function write($gas, $address = '') 
 	{
 		$address = env('ADDRESS');
-		Log::warning($gas);
 		Mail::to(env('MAIL_GAZPROM'))->send(new GazpromContact($gas, $address));
 	}
 }
