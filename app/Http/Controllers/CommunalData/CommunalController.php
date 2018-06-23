@@ -54,6 +54,8 @@ class CommunalController extends Controller
 					}
 				}
 
+				Log::warning($gazprom);
+
 
 				$comManager->make()->write($comfort);
 				$gasManager->make()->write($gazprom);
