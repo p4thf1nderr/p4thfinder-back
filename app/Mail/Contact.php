@@ -43,7 +43,7 @@ class Contact extends Mailable
         }
 
         return $this->view('communalMail',
-            ['type' => $type,'message' => $message, 'address' => $address]);
+            ['type' => $type,'message' => $this->text, 'address' => $this->address]);
     }
     
 }
