@@ -9,7 +9,7 @@ class ComfortMail
 {
 	public function write($text, $type, $address = '') 
 	{
-		dd($text, $type, $address);
+		//dd($text, $type, $address);
 		Mail::to(env('MAIL_COMFORT'))->send(new Contact($text, $type, $address));
 	}
 }
