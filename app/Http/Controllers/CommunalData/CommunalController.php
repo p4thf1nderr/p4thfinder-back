@@ -15,8 +15,6 @@ class CommunalController extends Controller
 {
     public function index($value = '', ComfortManager $comManager, GazpromManager $gasManager)
     {
-    	//$param = 'GAS#12, COLD#10, HOT#5';
-		//dd($messages);
     	$token = env('BOT_TOKEN');
 		$bot = new \TelegramBot\Api\Client($token);
 		// команда для start
@@ -41,8 +39,6 @@ class CommunalController extends Controller
 		    	$parser = new Parser($param);
 				$messages = $parser->parse();
 
-				// в массиве $messages содержится элементы
-
 				$comfort = [];
 				$gazprom = null;
 
@@ -65,16 +61,5 @@ class CommunalController extends Controller
 
 
 		$bot->run();
-
-		//Log::warning('бот запускается');
-		/*
-		$token = env('BOT_TOKEN');
-		$chatId = env('CHAT_ID');
-		$messageText = 'Передайте показания';
-
-		$bot = new \TelegramBot\Api\BotApi($token);
-
-		$bot->sendMessage($chatId, $messageText);*/
-		//$bot->run();
     }
 }
