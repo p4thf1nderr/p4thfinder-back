@@ -27,14 +27,13 @@ class TagController extends Controller
      */
     public function store(Request $request) {
 
-       /*  $args = $request->all();
+        $args = $request->all();
 
-        $post = new Post();
-        $post->title = $args['input']['title'];
-        $post->text  = $args['input']['text'];
-        $post->save();
+        $tag = new Tag();
+        $tag->title = $args['input']['title'];
+        $tag->save();
 
-        return $post; */
+        return $tag;
     }
 
     /**
@@ -44,6 +43,16 @@ class TagController extends Controller
      * @param Request $request
      */
     public function update($id, Request $request) {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $args = $request->all();
+
+        if (isset($args['input']['title'])) {
+            $tag->title = $args['input']['title'];
+        }
+
+        $tag->save();
+
+        return $tag;
     }
 }

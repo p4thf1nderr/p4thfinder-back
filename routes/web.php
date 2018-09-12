@@ -68,6 +68,13 @@ $router->group(['prefix' => 'v1', 'middleware' => 'cors', 'namespace' => 'Api\v1
             $router->post('posts/edit/{id}', [
                 'as' => 'postUpdate', 'uses' => 'PostController@update'
             ]);
+
+            $router->post('tags/new/', [
+                'as' => 'tagCreate', 'uses' => 'TagController@store'
+            ]);
+            $router->post('tags/edit/{id}', [
+                'as' => 'tagUpdate', 'uses' => 'TagController@update'
+            ]);
         }
     );
 
