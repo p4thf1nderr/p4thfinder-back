@@ -10,10 +10,14 @@ class PostTransformer extends TransformerAbstract
 {
     public function transform(Post $post)
     {
+
+        //dd($post->tags);
+
         return [
             'id' => $post->id,
             'title' => $post->title,
-            'text' => $post->text
+            'text' => $post->text,
+            'tags' => $post->tags
         ];
     }
 }

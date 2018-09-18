@@ -65,6 +65,5 @@ class TagController extends Controller
      */
     public function show($id) {
         return $this->item(Tag::findOrFail($id), new TagTransformer());
-        //return Post::find($id);
     }
 }
