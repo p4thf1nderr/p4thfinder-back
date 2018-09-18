@@ -69,6 +69,8 @@ class PostController extends Controller
             $post->text  = $args['input']['text'];
         }
 
+        $post->tags()->sync($args['input']['checked']);
+
         $post->save();
 
         return $post;
