@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return $this->collection(Post::paginate(10), new PostTransformer());
+        return $this->collection(Post::paginate(20), new PostTransformer());
     }
 
 
@@ -26,9 +26,9 @@ class PostController extends Controller
      * @param [type] $id
      * @return array
      */
-    public function show($id) {
+    public function show($id)
+    {
         return $this->item(Post::findOrFail($id), new PostTransformer());
-        //return Post::find($id);
     }
 
     /**
@@ -37,7 +37,8 @@ class PostController extends Controller
      * @param Request $request
      * @return Post
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $args = $request->all();
         $post = new Post();
         $post->title = $args['input']['title'];
@@ -56,7 +57,8 @@ class PostController extends Controller
      * @param Request $request
      * @return Post
      */
-    public function update($id, Request $request) {
+    public function update($id, Request $request) 
+    {
         $post = Post::findOrFail($id);
 
         $args = $request->all();
@@ -74,7 +76,6 @@ class PostController extends Controller
         $post->save();
 
         return $post;
-
     }
 
     /**
