@@ -55,4 +55,16 @@ class TagController extends Controller
 
         return $tag;
     }
+
+
+    /**
+     * Отдельный тег
+     *
+     * @param [type] $id
+     * @return array
+     */
+    public function show($id) {
+        return $this->item(Tag::findOrFail($id), new TagTransformer());
+        //return Post::find($id);
+    }
 }
