@@ -39,6 +39,6 @@ class Communal extends Command
      */
     public function handle()
     {
-        CommunalController::index();
+        CommunalController::alarm();
     }
 }

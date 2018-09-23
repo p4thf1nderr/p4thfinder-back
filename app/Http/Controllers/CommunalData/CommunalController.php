@@ -6,9 +6,6 @@ use App\Mail\Contact;
 use App\Services\Communal\Comfort\ComfortManager;
 use App\Services\Communal\Gazprom\GazpromManager;
 use App\Services\Communal\Parser;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 
 class CommunalController extends Controller
@@ -61,5 +58,15 @@ class CommunalController extends Controller
 
 
 		$bot->run();
+    }
+
+    public static function alarm()
+    {
+        $token = env('BOT_TOKEN');
+        $chatId = env('CHAT_ID');
+        $messageText = 'Передайте показания';
+        $bot = new \TelegramBot\Api\BotApi($token);
+        $bot->sendMessage($chatId, $messageText);
+        $bot->run();
     }
 }
